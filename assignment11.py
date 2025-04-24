@@ -1,8 +1,8 @@
 import random
 # 1.Დაწერეთ პროგრამა რომელიც მოცემული ტემპერატურების [22, 25, 19, 23, 25, 26, 23] მიხედვით გამოითვლის საშუალო ტემპერატურას და დაბეჭდავს ეკრანზე.
-temp_list = [22, 25, 19, 23, 25, 26, 23]
+temp_list: list[int] = [22, 25, 19, 23, 25, 26, 23]
 
-def average_temp(temp_list):
+def average_temp(temp_list: list[int]) -> float:
     return sum(temp_list) / len(temp_list)
 
 print(average_temp(temp_list))
@@ -17,10 +17,12 @@ print(average_temp(temp_list))
     List - [1, 4, 4, 4, 4, 2, 2]
     Length - 7
 '''
-random_numbers_list = []
+random_numbers_list: list[int] = []
 
+i: int
 for i in range(50):
     random_number = random.randint(1, 30)
+    i: int
     for i in range(random_number):
         random_numbers_list.append(random_number) 
 
@@ -46,8 +48,9 @@ print(len(random_numbers_list))
     List - [2, 1,  4]
     Length - 3
 '''
-second_random_numbers_list = []
+second_random_numbers_list: list[int] = []
 
+i: int
 for i in range(50):
     second_random_number = random.randint(1, 30)
     if second_random_number not in second_random_numbers_list:
@@ -68,8 +71,8 @@ print(len(second_random_numbers_list))
     [0, 1, 3, 4, 7, 9, 10]
 '''
 
-first_list = [1, 3, 10]
-second_list = [0, 4, 7, 9]
+first_list: list[int] = [1, 3, 10]
+second_list: list[int] = [0, 4, 7, 9]
 
 ''' with sort
 def merge_lists(first_list, second_list):
@@ -79,7 +82,7 @@ def merge_lists(first_list, second_list):
 '''
 
 # without sort
-def merge_lists(list1, list2):
+def merge_lists(list1: list[int], list2: list[int]) -> list[int]:
     merged = []
     i = j = 0
     
@@ -101,4 +104,9 @@ def merge_lists(list1, list2):
     
     return merged
 
-print(merge_lists(first_list, second_list))
+
+def main() -> None: 
+    print(merge_lists(first_list, second_list))
+    
+if __name__ == '__main__': 
+    main()
