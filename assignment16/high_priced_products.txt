@@ -1,0 +1,4 @@
+sam_jones,orange,10,1.0
+lisa_white,grapes,3,3.5
+peter_black,mango,2,15.0
+alex_green,watermelon,1,20.0
