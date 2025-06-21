@@ -1,12 +1,19 @@
 import json
 import uuid
 
-def add_student(file_path: str, name: str, lastname: str, address: str, score: float) -> None: 
+def load_students(file_path: str) -> list:
     try:
-        with open(file_path) as file:
-            students = json.load(file)
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        students = []
+        return []
+
+def save_students(file_path: str, students: list) -> None:
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(students, f, indent=2)
+
+def add_student(file_path: str, name: str, lastname: str, address: str, score: float) -> None: 
+    students = load_students(file_path)
 
     new_student = {
         "id": str(uuid.uuid4()),
@@ -18,17 +25,11 @@ def add_student(file_path: str, name: str, lastname: str, address: str, score: f
 
     students.append(new_student)
 
-    with open(file_path, 'w') as file:
-        json.dump(students, file, indent=2)
+    save_students(file_path, students)
 
 def get_students(file_path: str, by_name: str=None, by_lastname: str=None, by_score: float=None, sort_by: str=None, descending: bool=False) -> list:
-
-    try:
-        with open(file_path) as file:
-            students = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return []
-
+    students = load_students(file_path)
+    
     if by_name:
         students = [s for s in students if s['name'] == by_name]
     if by_lastname:
@@ -50,12 +51,7 @@ def get_students(file_path: str, by_name: str=None, by_lastname: str=None, by_sc
     return students
 
 def calculate_average_score(file_path: str) -> float:
-    try:
-        with open(file_path) as file:
-            students = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("სტუდენტები ვერ მოიძებნა.")
-        return 0.0
+    students = load_students(file_path)
 
     if not students:
         print("სტუდენტები ვერ მოიძებნა.")
@@ -68,12 +64,7 @@ def calculate_average_score(file_path: str) -> float:
     return average_score
 
 def calculate_highest_score(file_path: str) -> dict:
-    try:
-        with open(file_path) as file:
-            students = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("სტუდენტები ვერ მოიძებნა.")
-        return {}
+    students = load_students(file_path)
 
     if not students:
         print("სტუდენტები ვერ მოიძებნა.")
@@ -85,12 +76,7 @@ def calculate_highest_score(file_path: str) -> dict:
     return highest_score_student
 
 def calculate_lowest_score(file_path: str) -> dict:
-    try:
-        with open(file_path) as file:
-            students = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("სტუდენტები ვერ მოიძებნა.")
-        return {}
+    students = load_students(file_path)
 
     if not students:
         print("სტუდენტები ვერ მოიძებნა.")
@@ -101,13 +87,8 @@ def calculate_lowest_score(file_path: str) -> dict:
     print(f"დაბალი ქულა: {lowest_score_student['score']} - {lowest_score_student['name']} {lowest_score_student['lastname']}")
     return lowest_score_student
 
-def find_student_by_score(file_path, score):
-    try:
-        with open(file_path) as file:
-            students = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("სტუდენტები ვერ მოიძებნა.")
-        return []
+def find_student_by_score(file_path: str, score: float) -> list:
+    students = load_students(file_path)
 
     found_students = [s for s in students if s['score'] == score]
 
@@ -120,13 +101,8 @@ def find_student_by_score(file_path, score):
 
     return found_students
 
-def delete_student(file_path, student_id):
-    try:
-        with open(file_path) as file:
-            students = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("სტუდენტები ვერ მოიძებნა.")
-        return
+def delete_student(file_path: str, student_id: str) -> None:
+    students = load_students(file_path)
 
     students = [s for s in students if s['id'] != student_id]
 
