@@ -1,0 +1,30 @@
+[
+  {
+    "id": "a1f25f7e-39d9-4f4a-b02f-2a7ad1be3cc1",
+    "name": "John",
+    "lastname": "Doe",
+    "address": "123 Elm Street, Springfield",
+    "score": 85
+  },
+  {
+    "id": "c30221c8-9149-443e-8f2b-02410db8f6ff",
+    "name": "Jane",
+    "lastname": "Smith",
+    "address": "456 Oak Avenue, Metropolis",
+    "score": 92
+  },
+  {
+    "id": "3a8bb1ce-5d3f-4b2f-84f2-e940c88b3c4c",
+    "name": "Alice",
+    "lastname": "Johnson",
+    "address": "789 Maple Road, Gotham",
+    "score": 77
+  },
+  {
+    "id": "b4d238e4-e1f2-441c-b77f-98d7d18fcac6",
+    "name": "Bob",
+    "lastname": "Williams",
+    "address": "321 Birch Lane, Star City",
+    "score": 68
+  }
+]
