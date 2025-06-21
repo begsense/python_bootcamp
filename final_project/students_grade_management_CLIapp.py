@@ -86,7 +86,7 @@ def calculate_highest_score(file_path: str) -> dict:
     return highest_score_student
 
 def calculate_lowest_score(file_path: str) -> dict:
-    """Find and print students with a specific score."""
+    """Find and print the student with the lowest score."""
 
     students = load_students(file_path)
 
@@ -100,8 +100,8 @@ def calculate_lowest_score(file_path: str) -> dict:
     return lowest_score_student
 
 def find_student_by_score(file_path: str, score: float) -> list:
-    """Delete a student by ID and update the file."""
-    
+    """Find and print students with a specific score."""
+
     students = load_students(file_path)
 
     found_students = [s for s in students if s['score'] == score]
@@ -116,6 +116,7 @@ def find_student_by_score(file_path: str, score: float) -> list:
     return found_students
 
 def delete_student(file_path: str, student_id: str) -> None:
+    """Delete a student by ID and update the file."""
     students = load_students(file_path)
 
     students = [s for s in students if s['id'] != student_id]
@@ -124,3 +125,59 @@ def delete_student(file_path: str, student_id: str) -> None:
         json.dump(students, file, indent=2)
 
     print(f"სტუდენტი {student_id} წაშლილია.")
+
+
+def main():
+    file_path = 'final_project/students.json'
+
+    while True:
+        print("\n📚 STUDENT SCORE MANAGEMENT SYSTEM")
+        print("1. Add Student")
+        print("2. View Students")
+        print("3. Delete Student")
+        print("4. Calculate Average Score")
+        print("5. Find Highest Score")
+        print("6. Find Lowest Score")
+        print("7. Search by Score")
+        print("8. Exit")
+
+        choice = input("Choose an option (1-8): ")
+
+        if choice == '1':
+            name = input("Enter name: ")
+            lastname = input("Enter lastname: ")
+            address = input("Enter address (optional): ")
+            score = float(input("Enter score: "))
+            add_student(file_path, name, lastname, address, score)
+
+        elif choice == '2':
+            sort_field = input("Sort by (name/lastname/score)? Press Enter to skip: ")
+            order = input("Descending? (y/n): ").lower() == 'y'
+            get_students(file_path, sort_by=sort_field if sort_field else None, descending=order)
+
+        elif choice == '3':
+            student_id = input("Enter student ID to delete: ")
+            delete_student(file_path, student_id)
+
+        elif choice == '4':
+            calculate_average_score(file_path)
+
+        elif choice == '5':
+            calculate_highest_score(file_path)
+
+        elif choice == '6':
+            calculate_lowest_score(file_path)
+
+        elif choice == '7':
+            score = float(input("Enter score to search for: "))
+            find_student_by_score(file_path, score)
+
+        elif choice == '8':
+            print("👋 Goodbye!")
+            break
+
+        else:
+            print("❌ Invalid option. Try again.")
+
+if __name__ == '__main__':
+    main()
