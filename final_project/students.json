@@ -1,30 +1,30 @@
 [
   {
     "id": "a1f25f7e-39d9-4f4a-b02f-2a7ad1be3cc1",
-    "name": "ლაშა",
-    "lastname": "ჯუღელი",
-    "address": "ვაკე, თბილისი",
+    "name": "Lasha",
+    "lastname": "Jugheli",
+    "address": "Vake, Tbilisi",
     "score": 100
   },
   {
     "id": "c30221c8-9149-443e-8f2b-02410db8f6ff",
-    "name": "ბეგი",
-    "lastname": "კოპალიანი",
-    "address": "აფრიკის დასახლება, თბილისი",
+    "name": "Begi",
+    "lastname": "Kopaliani",
+    "address": "Afrika, Tbilisi",
     "score": 2
   },
   {
     "id": "3a8bb1ce-5d3f-4b2f-84f2-e940c88b3c4c",
-    "name": "მერაბიკო",
-    "lastname": "ციციშვილი",
-    "address": "ვაჟა-ფშაველას გამზირი, თბილისი",
+    "name": "Merabiko",
+    "lastname": "Tsitsishvili",
+    "address": "Vazha-Pshavela, Tbilisi",
     "score": 98
   },
   {
     "id": "b4d238e4-e1f2-441c-b77f-98d7d18fcac6",
-    "name": "თემურა",
-    "lastname": "ანთიძე",
-    "address": "სამედიცინო უნივერსიტეტი, თბილისი",
+    "name": "Temura",
+    "lastname": "Antidze",
+    "address": "Isani, Tbilisi",
     "score": 96
   }
 ]
